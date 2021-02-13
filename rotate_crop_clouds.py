@@ -35,8 +35,8 @@ from std_msgs.msg import Header
 # The rosbag to process
 in_bagfile = str(sys.argv[1])
 out_bagfile = str(sys.argv[2])
-start_time = sys.argv[3]
-end_time = sys.argv[4]
+start_time = float(sys.argv[3])
+end_time = float(sys.argv[4])
 
 pointcloud_topic = "/velodyne_points_ex"
 
