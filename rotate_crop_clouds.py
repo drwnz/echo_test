@@ -81,9 +81,6 @@ with rosbag.Bag(out_bagfile, 'w') as out_bag:
     for topic, msg, t in rosbag.Bag(in_bagfile).read_messages():
         if topic == pointcloud_topic and msg.header.stamp.to_sec() > start_time and msg.header.stamp.to_sec() < end_time:
             cropped_points = crop_topic_data(list(point_cloud2.read_points(transform_pointcloud(msg), skip_nans=True, field_names = ("x", "y", "z", "intensity", "return_type"))), crop_list)
-            for i in range(len(cropped_points)):
-                cropped_points[i][-1] = int(cropped_points[i][-1])
-                cropped_points[i][-2] = int(cropped_points[i][-2])
 
             fields = [PointField('x', 0, PointField.FLOAT32, 1),
                       PointField('y', 4, PointField.FLOAT32, 1),
